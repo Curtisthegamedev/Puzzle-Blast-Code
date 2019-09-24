@@ -22,10 +22,8 @@ public class EnemyFlyDrone : MonoBehaviour
 
 
     void Start()
-    {
-        //at the beggining I set the timer to 0 and the targetPlayer Transform variable to my Player game object(The heart). 
-        targetPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        //randomTarget = GameObject.FindGameObjectWithTag("RanTarget").GetComponent<Transform>(); 
+    { 
+        targetPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); 
         timer = 0;
     }
 
@@ -39,9 +37,7 @@ public class EnemyFlyDrone : MonoBehaviour
 
     void MoveToPlayer()
     {
-        //This is where I create my Move to player method. 
-
-        //I use a bool variable, if statements and a timer float variable to change to the players turn when the enemy turn lasts for ten seconds.   
+        //This is where I create my Move to player method.    
         if (isMoveing == true && playerIsNear && !Player.isInvisable)
         {
             //transforms the attacks position to chase the player. 
@@ -50,10 +46,6 @@ public class EnemyFlyDrone : MonoBehaviour
         else if (isMoveing == true && !playerIsNear || Player.isInvisable)
         {
             transform.position = Vector2.MoveTowards(transform.position, randomTarget.position, Speed * Time.deltaTime); 
-        }
-        else if (turntimer >= 10)
-        {
-            NextTurn = true;
         }
 
     }
